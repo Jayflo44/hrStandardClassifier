@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "script": "preprocessing.py",
+    "timestamp": "2026-04-05T07:28:29.911387+00:00",
+    "elapsed_seconds": 141.014,
+    "workers_used": 1
+  },
+  "files": {
+    "input": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\raw\\jigsaw-toxic-comment-classification-challenge\\train\\train.csv",
+    "output": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\train_clean.csv",
+    "report": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\preprocessing_report.json"
+  },
+  "dataset": {
+    "total_rows": 159571,
+    "nan_filled": 0,
+    "empty_or_nan_texts": 0
+  },
+  "pipeline_config": {
+    "normalize_unicode": true,
+    "unescape_html": true,
+    "strip_wiki": true,
+    "strip_urls": true,
+    "expand_contractions": true,
+    "deobfuscate": true,
+    "collapse_punct": true,
+    "strip_non_alnum": true,
+    "detect_caps": true,
+    "custom_steps_count": 0
+  },
+  "transformations": {
+    "html_unescape": {
+      "rows_affected": 50
+    },
+    "unicode_normalization": {
+      "rows_affected": 6121
+    },
+    "capslock_detection": {
+      "rows_flagged": 2766
+    },
+    "wiki_noise_removal": {
+      "rows_affected": 10121,
+      "total_matches": 11685
+    },
+    "url_ip_removal": {
+      "rows_affected": 14351,
+      "total_matches": 18919
+    },
+    "contraction_expansion": {
+      "rows_affected": 64666,
+      "total_expansions": 145451,
+      "top_20": {
+        "don't": 22936,
+        "i'm": 17889,
+        "it's": 17563,
+        "i've": 8688,
+        "you're": 7248,
+        "doesn't": 6283,
+        "that's": 6098,
+        "can't": 5382,
+        "didn't": 5308,
+        "i'll": 5285,
+        "isn't": 4252,
+        "i'd": 3451,
+        "cannot": 3168,
+        "there's": 3166,
+        "you've": 2395,
+        "won't": 2134,
+        "wasn't": 2068,
+        "he's": 2046,
+        "haven't": 1768,
+        "aren't": 1541
+      }
+    },
+    "profanity_deobfuscation": {
+      "total_matches": 29596,
+      "by_word": {
+        "fuck": 14535,
+        "shit": 4070,
+        "nigger": 3738,
+        "bitch": 2370,
+        "cunt": 1863,
+        "asshole": 1120,
+        "damn": 1039,
+        "bastard": 861
+      }
+    },
+    "repeated_punct_collapse": {
+      "rows_affected": 18280,
+      "total_matches": 34765
+    },
+    "non_alnum_strip": {
+      "rows_affected": 154427,
+      "total_matches": 1844575
+    }
+  },
+  "text_length_stats_post": {
+    "mean": 373.54,
+    "median": 193.0,
+    "std": 563.3,
+    "min": 0,
+    "max": 5085,
+    "p25": 88.0,
+    "p75": 414.0,
+    "p95": 1293.0
+  }
+}
