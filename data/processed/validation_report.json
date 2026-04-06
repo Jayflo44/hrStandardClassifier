@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "script": "validate_clean.py",
+    "timestamp": "2026-04-05T07:29:13.774944+00:00",
+    "elapsed_seconds": 5.626
+  },
+  "files": {
+    "raw_csv": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\raw\\jigsaw-toxic-comment-classification-challenge\\train\\train.csv",
+    "preprocessed_csv": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\train_clean.csv",
+    "output_csv": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\train_clean_validated.csv",
+    "report_json": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\validation_report.json"
+  },
+  "integrity_validation": {
+    "passed": true,
+    "original_rows": 159571,
+    "preprocessed_rows": 159571,
+    "columns_checked": [
+      "id",
+      "toxic",
+      "severe_toxic",
+      "obscene",
+      "threat",
+      "insult",
+      "identity_hate"
+    ],
+    "missing_columns": [],
+    "row_count_match": true,
+    "column_mismatches": {}
+  },
+  "null_analysis": {
+    "total_nulls": 25,
+    "rows_with_any_null": 25,
+    "per_column": {
+      "comment_text": {
+        "count": 25,
+        "percentage": 0.0157
+      }
+    }
+  },
+  "cleaning": {
+    "rows_before": 159571,
+    "rows_dropped": 25,
+    "rows_after": 159546,
+    "drop_reason": "null in 'comment_text'",
+    "dropped_ids_sample": [
+      "1089bc2866ce9379",
+      "2db3383cc656e1a0",
+      "3452aa44f93b7ee1",
+      "6f164135cb541433",
+      "7d20e8230b72cb7d",
+      "83b6b072493d5919",
+      "8fb2aaf04e93061a",
+      "a544b25e60599d48",
+      "a8d709deb153d952",
+      "adac7518742a67c6",
+      "b725fb15145e7fd9",
+      "cb865a14eb50f867",
+      "dc739d0aa187100e",
+      "e8abbf7044ff8184",
+      "fb78de723a337228",
+      "00f98ecb4168faf7",
+      "0e027c2927ba98dd",
+      "3b9f582321af808c",
+      "4c0bd38e3d1796d0",
+      "5d3a3920ccecc890",
+      "9453c3fea5b96068",
+      "f3ea34b46e7bec23",
+      "3ff4333a2976c327",
+      "9fe2529bbf1aa64a",
+      "f1c4a78e1b229f1f"
+    ]
+  },
+  "post_clean_remaining_nulls": 0,
+  "dataset_stats": {
+    "total_rows": 159546,
+    "total_columns": 8,
+    "columns": [
+      "id",
+      "comment_text",
+      "toxic",
+      "severe_toxic",
+      "obscene",
+      "threat",
+      "insult",
+      "identity_hate"
+    ],
+    "empty_texts": 0,
+    "text_length": {
+      "mean": 373.6,
+      "median": 193.0,
+      "std": 563.32,
+      "min": 1,
+      "max": 5085,
+      "p25": 88.0,
+      "p75": 414.0,
+      "p95": 1293.0
+    },
+    "label_distribution": {
+      "toxic": {
+        "positive": 15294,
+        "negative": 144252,
+        "positive_rate": 9.586
+      },
+      "severe_toxic": {
+        "positive": 1595,
+        "negative": 157951,
+        "positive_rate": 0.9997
+      },
+      "obscene": {
+        "positive": 8449,
+        "negative": 151097,
+        "positive_rate": 5.2957
+      },
+      "threat": {
+        "positive": 478,
+        "negative": 159068,
+        "positive_rate": 0.2996
+      },
+      "insult": {
+        "positive": 7877,
+        "negative": 151669,
+        "positive_rate": 4.9371
+      },
+      "identity_hate": {
+        "positive": 1405,
+        "negative": 158141,
+        "positive_rate": 0.8806
+      }
+    }
+  },
+  "status": "OK"
+}
