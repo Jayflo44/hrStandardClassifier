@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-09T04:39:36.218111+00:00",
+  "predictions_file": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/artifacts/predictions/holdout_predictions.csv",
+  "num_rows": 31910,
+  "metrics": {
+    "accuracy": 0.9554,
+    "precision": 0.7554,
+    "recall": 0.8308,
+    "f1_score": 0.7913,
+    "confusion_matrix": {
+      "true_negatives": 27792,
+      "false_positives": 873,
+      "false_negatives": 549,
+      "true_positives": 2696
+    }
+  }
+}

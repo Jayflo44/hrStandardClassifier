@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-09T04:39:36.309632+00:00",
+  "predictions_file": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/artifacts/predictions/oof_predictions.csv",
+  "num_rows": 159546,
+  "metrics": {
+    "accuracy": 0.9561,
+    "precision": 0.7573,
+    "recall": 0.8365,
+    "f1_score": 0.795,
+    "confusion_matrix": {
+      "true_negatives": 138972,
+      "false_positives": 4349,
+      "false_negatives": 2652,
+      "true_positives": 13573
+    }
+  }
+}

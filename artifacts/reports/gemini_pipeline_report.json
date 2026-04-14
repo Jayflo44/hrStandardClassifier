@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "script": "test_gemini_pipeline.py",
+    "timestamp": "2026-04-05T23:37:09.419293+00:00",
+    "elapsed_seconds": 320.299,
+    "prediction_seconds": 234.383,
+    "methodology": "balanced_sample_1000",
+    "ambiguous_treated_as": "FLAGGED"
+  },
+  "sample": {
+    "total": 1000,
+    "toxic": 500,
+    "clean": 500,
+    "balance": "50/50 (artificial)"
+  },
+  "triage_distribution": {
+    "OK por Tier 2": 507,
+    "Tier 2 (Semántica)": 306,
+    "Tier 1 (Reglas)": 187
+  },
+  "confusion_matrix": {
+    "true_negatives": 488,
+    "false_positives": 12,
+    "false_negatives": 19,
+    "true_positives": 481
+  },
+  "metrics": {
+    "precision": 0.975659,
+    "recall": 0.962,
+    "f1_score": 0.968781,
+    "accuracy": 0.969
+  }
+}

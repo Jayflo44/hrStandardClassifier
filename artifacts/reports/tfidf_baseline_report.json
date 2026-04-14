@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "script": "test_tfidf_baseline.py",
+    "timestamp": "2026-04-05T23:38:45.165404+00:00",
+    "elapsed_seconds": 73.253,
+    "tfidf_seconds": 61.444,
+    "training_seconds": 10.585,
+    "prediction_seconds": 0.021,
+    "throughput_rows_per_sec": 1518800.6,
+    "methodology": "tfidf_pure_baseline",
+    "model": "LogisticRegression(solver='liblinear', class_weight='balanced')",
+    "vectorizer": {
+      "max_features": 50000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "sublinear_tf": true,
+      "min_df": 3,
+      "max_df": 0.95
+    }
+  },
+  "dataset": {
+    "total_rows": 159546,
+    "toxic_positives": 16225,
+    "toxic_rate_pct": 10.1695,
+    "train_size": 127636,
+    "test_size": 31910,
+    "features": 50000
+  },
+  "confusion_matrix": {
+    "true_negatives": 27347,
+    "false_positives": 1318,
+    "false_negatives": 469,
+    "true_positives": 2776
+  },
+  "metrics": {
+    "accuracy": 0.943999,
+    "precision": 0.678065,
+    "recall": 0.85547,
+    "f1_score": 0.756506
+  }
+}

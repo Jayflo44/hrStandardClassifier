@@ -1,0 +1,74 @@
+# =====================================================================
+# HR Standards Classifier - Tier 1 Rule Engine Configuration
+# Proyecto: CS 4364 - Natural Language Processing
+# =====================================================================
+
+rules:
+  # -------------------------------------------------------------------
+  # CATEGORÍA 1: Discurso de Odio y Discriminación (Basado en guías EEOC)
+  # Objetivo: Tolerancia cero a insultos raciales, étnicos, de género 
+  # u orientación sexual. Crea un ambiente hostil automático.
+  # -------------------------------------------------------------------
+  - category: "Hate Speech and Slurs"
+    type: "lexicon"
+    boundary: true  # Usa \b para requerir la palabra exacta y aislada
+    words:
+      - "nigger"
+      - "nigga"
+      - "faggot"
+      - "fag"
+      - "spic"
+      - "chink"
+      - "kike"
+      - "tranny"
+      - "dyke"
+      - "wetback"
+      - "raghead"
+      - "retard"
+      - "halfbreed"
+
+  # -------------------------------------------------------------------
+  # CATEGORÍA 2: Profanidad Severa y NSFW (Subconjunto Filtrado LDNOOBW)
+  # Objetivo: Lenguaje explícitamente sexual o groserías de grado A.
+  # Nota: Se omitieron palabras como 'breast', 'stroke' o 'knob' para 
+  # evitar Falsos Positivos en contextos de salud o ingeniería.
+  # -------------------------------------------------------------------
+  - category: "Severe Profanity (NSFW)"
+    type: "lexicon"
+    boundary: true
+    words:
+      - "fuck"
+      - "motherfucker"
+      - "cunt"
+      - "cocksucker"
+      - "dickhead"
+      - "whore"
+      - "slut"
+      - "bitch"
+      - "pussy"
+      - "bullshit"
+      - "cum"
+
+  # -------------------------------------------------------------------
+  # CATEGORÍA 3: Evasión y Ofuscación Intencional (Regex)
+  # Objetivo: Capturar a los usuarios que intentan engañar al Lexicón
+  # usando símbolos ('leetspeak' básico).
+  # -------------------------------------------------------------------
+  - category: "Obfuscated Profanity"
+    type: "regex"
+    # Detecta variaciones de f*ck, sh*t y b*tch
+    pattern: "f[u\\*\\@\\!]+ck|sh[i\\*\\@\\!]+t|b[i\\*\\@\\!]+tch"
+
+  # -------------------------------------------------------------------
+  # CATEGORÍA 4: Doxxing y Fuga de PII (Estándares de Ciberseguridad)
+  # Objetivo: Evitar la transmisión de datos altamente sensibles en texto plano.
+  # -------------------------------------------------------------------
+  - category: "PII Leak - US Social Security Number"
+    type: "regex"
+    # SSN válido de EE.UU. (no puede empezar con 000, 666 o 900-999)
+    pattern: "\\b(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}\\b"
+
+  - category: "PII Leak - Credit Card (PCI-DSS)"
+    type: "regex"
+    # Captura formatos estándar de 16 dígitos (con o sin guiones/espacios)
+    pattern: "\\b(?:\\d{4}[\\s-]?){3}\\d{4}\\b"

@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "script": "test_tier_one.py",
+    "timestamp": "2026-04-05T07:51:02.323444+00:00",
+    "elapsed_seconds": 26.894,
+    "prediction_seconds": 24.552,
+    "throughput_rows_per_sec": 6498.2
+  },
+  "files": {
+    "dataset": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\train_clean_validated.csv",
+    "rules": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\hr_rules.yaml",
+    "report": "C:\\Users\\HP Victus\\Desktop\\hrStandardClassifier\\data\\processed\\tier1_test_report.json"
+  },
+  "dataset": {
+    "total_rows": 159546,
+    "label_columns": [
+      "toxic",
+      "severe_toxic",
+      "obscene",
+      "threat",
+      "insult",
+      "identity_hate"
+    ],
+    "any_toxic_positives": 16225,
+    "any_toxic_negatives": 143321,
+    "any_toxic_rate_pct": 10.1695,
+    "per_label_positives": {
+      "toxic": 15294,
+      "severe_toxic": 1595,
+      "obscene": 8449,
+      "threat": 478,
+      "insult": 7877,
+      "identity_hate": 1405
+    }
+  },
+  "global_evaluation": {
+    "ground_truth": "any_toxic (OR of all 6 labels)",
+    "support_positive": 16225,
+    "support_negative": 143321,
+    "positive_rate_pct": 10.1695,
+    "confusion_matrix": {
+      "true_negatives": 142512,
+      "false_positives": 809,
+      "false_negatives": 9594,
+      "true_positives": 6631
+    },
+    "metrics": {
+      "precision": 0.891263,
+      "recall": 0.40869,
+      "f1_score": 0.560406,
+      "accuracy": 0.934796
+    }
+  },
+  "per_class_evaluation": {
+    "toxic": {
+      "support_positive": 15294,
+      "support_negative": 144252,
+      "positive_rate_pct": 9.586,
+      "confusion_matrix": {
+        "true_negatives": 143176,
+        "false_positives": 1076,
+        "false_negatives": 8930,
+        "true_positives": 6364
+      },
+      "metrics": {
+        "precision": 0.855376,
+        "recall": 0.416111,
+        "f1_score": 0.559866,
+        "accuracy": 0.937285
+      }
+    },
+    "severe_toxic": {
+      "support_positive": 1595,
+      "support_negative": 157951,
+      "positive_rate_pct": 0.9997,
+      "confusion_matrix": {
+        "true_negatives": 151839,
+        "false_positives": 6112,
+        "false_negatives": 267,
+        "true_positives": 1328
+      },
+      "metrics": {
+        "precision": 0.178495,
+        "recall": 0.832602,
+        "f1_score": 0.293968,
+        "accuracy": 0.960018
+      }
+    },
+    "obscene": {
+      "support_positive": 8449,
+      "support_negative": 151097,
+      "positive_rate_pct": 5.2957,
+      "confusion_matrix": {
+        "true_negatives": 149389,
+        "false_positives": 1708,
+        "false_negatives": 2717,
+        "true_positives": 5732
+      },
+      "metrics": {
+        "precision": 0.77043,
+        "recall": 0.678423,
+        "f1_score": 0.721505,
+        "accuracy": 0.972265
+      }
+    },
+    "threat": {
+      "support_positive": 478,
+      "support_negative": 159068,
+      "positive_rate_pct": 0.2996,
+      "confusion_matrix": {
+        "true_negatives": 151847,
+        "false_positives": 7221,
+        "false_negatives": 259,
+        "true_positives": 219
+      },
+      "metrics": {
+        "precision": 0.029435,
+        "recall": 0.458159,
+        "f1_score": 0.055317,
+        "accuracy": 0.953117
+      }
+    },
+    "insult": {
+      "support_positive": 7877,
+      "support_negative": 151669,
+      "positive_rate_pct": 4.9371,
+      "confusion_matrix": {
+        "true_negatives": 148672,
+        "false_positives": 2997,
+        "false_negatives": 3434,
+        "true_positives": 4443
+      },
+      "metrics": {
+        "precision": 0.597177,
+        "recall": 0.564047,
+        "f1_score": 0.58014,
+        "accuracy": 0.959692
+      }
+    },
+    "identity_hate": {
+      "support_positive": 1405,
+      "support_negative": 158141,
+      "positive_rate_pct": 0.8806,
+      "confusion_matrix": {
+        "true_negatives": 151542,
+        "false_positives": 6599,
+        "false_negatives": 564,
+        "true_positives": 841
+      },
+      "metrics": {
+        "precision": 0.113038,
+        "recall": 0.598577,
+        "f1_score": 0.190164,
+        "accuracy": 0.955104
+      }
+    }
+  },
+  "category_breakdown": {
+    "Severe Profanity (NSFW)": 4978,
+    "Obfuscated Profanity": 1281,
+    "Hate Speech and Slurs": 1139,
+    "PII Leak - Credit Card (PCI-DSS)": 42
+  },
+  "error_analysis": {
+    "false_negatives": {
+      "count": 9594,
+      "label_distribution": {
+        "toxic": 8930,
+        "severe_toxic": 267,
+        "obscene": 2717,
+        "threat": 259,
+        "insult": 3434,
+        "identity_hate": 564
+      },
+      "examples": [
+        "hey what is it talk what is it an exclusive group of some wp talibans who are good at destroying self appointed purist who gang up any one who asks them questions abt their anti social and destructive",
+        "bye do not look come or think of comming back tosser",
+        "i am sorry i am sorry i screwed around with someones talk page it was very bad to do i know how having the templates on their talk page helps you assert your dominance over them i know i should bow do",
+        "why can not you believe how fat artie is did you see him on his recent appearence on the tonight show with jay leno he looks absolutely awful if i had to put money on it i would say that artie lange i",
+        "hi i am back again last warning stop undoing my edits or die",
+        "would you both shut up you do not run wikipedia especially a stupid kid",
+        "a pair of jew hating weiner nazi schmucks",
+        "sorry puck but no one ever said dick was number one but he is clearly listed as being second only to batman and a master detective and martial artist and been trained in all the mentioned combat discp",
+        "CAPSLOCKFLAG unblock me or i will get my lawyers on to you for blocking my constitutional right to free speech",
+        "you should be fired you are a moronic wimp who is too lazy to do research it makes me sick that people like you exist in this world",
+        "i think that your a fagget get a oife and burn in hell i hate you m sorry we cant have any more sex i am running out of conndoms",
+        "your blatant pov pushing neither of you guys has made any contribution to this italian history article other than to shove your unhistorical unconstructive modern pov in my face this is a history arti",
+        "give me a permanat block raseac remember me muslims dont you worry for these images they are trying to hurt us but they cant look these images are fake and have nothing to do with islam or our prophet",
+        "hey why you are spreading misconceptions and trying to spread false information to the people you not even know who won the battle and who lost you are the cheapest person on the earth bloody ignorant",
+        "and you are let me know when you have crawled out of their arses dick laurent is dead"
+      ]
+    },
+    "false_positives": {
+      "count": 809,
+      "triggered_categories": {
+        "Severe Profanity (NSFW)": 355,
+        "Obfuscated Profanity": 306,
+        "Hate Speech and Slurs": 106,
+        "PII Leak - Credit Card (PCI-DSS)": 42
+      },
+      "examples": [
+        "yes because the mother of the child in the case against michael jackson was studied in here motives and reasonings and judged upon her character just as harshly as wacko jacko himself do not tell me t",
+        "new userbox tabtab id tabtab id c white tabtab info this user is a faggot tabtab info c lightblue tabtab border c black tabtab usercategory lgbt wikipedians tabtab nocat tabtab tabtab tabtab this temp",
+        "30 december 2009 do not worry i told you i had your back and i will continue to defend ya yup we got our proof of work when i first saw it i was like that is no reliable source cause i remember you re",
+        "no problem with that at all if you do not think that there is a problem with someone siting that i have a mistress then it just proves my point as to how far this site is to being an actual encycloped",
+        "4meter4 s sigh and my concerns only because mr 4meter4 had reverted any of contributions of mine given to this article so far i did not have a single chance to develop it his article called falsetto i",
+        "come on was this really necessary i understand where your coming from but you sound like a whiney bitch when you have a website that anyone can edit this sort of stuff comes with the territory and did",
+        "they are all cunt it is not worth editing articles here concerning any serious issue all sides consist of either people employed to edit or people with very strong opinions that will never ever change",
+        "speaking without knowing what i am talking about ok how bout this the original comment i made about everlast s entry constantly being vandalized by eminem fans was written a month ago before your dumb",
+        "unblocked for the last time ok now do not fuck up i mean that in the best possible way good luck and good night",
+        "source of the term is obvious sick brain word battle before rifle in some official sources mean used in battle this word is used to separate battle rifle from sport or hunting rifle in russian state s",
+        "i am back i already created id occasionally forget to log in but you can see the same class c when i do i collected a massive number of diff edits on balkanfever who pretends to be neutral but is on r",
+        "all i do is revert vandalism it is all there is to do since the admins are so incompetent if anyone worth a shit paid attention to the spi report s i have made about pe de chinelo you dumbasses would ",
+        "firstly some of the examples you used were from the personal attack pages maybe you should read your own posts also the reason i decided they were inane and decided to ignore them was because they did",
+        "i read that quality article reference number 3 where he states it is not because i died in the 9 11 attacks that put my career on hold it is because my financial backers pulled out he is obviously a g",
+        "i can understand you you definitely did not read the wikipedia articles for deletion assassination plots in the three kingdoms haha did you ever visist assassination plots in the three kingdoms the ta"
+      ]
+    }
+  }
+}

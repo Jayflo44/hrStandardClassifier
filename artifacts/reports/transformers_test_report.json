@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "script": "test_tier2.py",
+    "timestamp": "2026-04-05T09:50:12.431029+00:00",
+    "elapsed_seconds": 77.342,
+    "tier1_prediction_seconds": 4.801,
+    "tier2_prediction_seconds": 66.758,
+    "tier2_throughput_rows_per_sec": 155.8,
+    "model": "unitary/toxic-bert",
+    "threshold_safe": 0.2,
+    "threshold_toxic": 0.8
+  },
+  "files": {
+    "dataset": "/teamspace/studios/this_studio/data/processed/train_clean_validated.csv",
+    "rules": "/teamspace/studios/this_studio/hr_rules.yaml",
+    "errors_csv": "/teamspace/studios/this_studio/data/processed/tier1_errors.csv",
+    "report": "/teamspace/studios/this_studio/data/processed/tier2_test_report.json"
+  },
+  "tier1_summary": {
+    "total_rows_evaluated": 159546,
+    "false_negatives": 9594,
+    "false_positives": 809,
+    "total_errors": 10403
+  },
+  "tier2_global_evaluation": {
+    "confusion_matrix": {
+      "true_negatives": 755,
+      "false_positives": 54,
+      "false_negatives": 3668,
+      "true_positives": 5926
+    },
+    "metrics": {
+      "precision": 0.99097,
+      "recall": 0.617678,
+      "f1_score": 0.761012,
+      "accuracy": 0.642219
+    }
+  },
+  "tier1_error_resolution": {
+    "false_negatives": {
+      "total": 9594,
+      "recovered_by_tier2": 5926,
+      "still_missed": 3668,
+      "recovery_rate_pct": 61.77,
+      "metrics": {
+        "confusion_matrix": {
+          "true_negatives": 0,
+          "false_positives": 0,
+          "false_negatives": 3668,
+          "true_positives": 5926
+        },
+        "metrics": {
+          "precision": 1.0,
+          "recall": 0.617678,
+          "f1_score": 0.76366,
+          "accuracy": 0.617678
+        }
+      }
+    },
+    "false_positives": {
+      "total": 809,
+      "corrected_by_tier2": 755,
+      "still_wrong": 54,
+      "correction_rate_pct": 93.33,
+      "metrics": {
+        "confusion_matrix": {
+          "true_negatives": 755,
+          "false_positives": 54,
+          "false_negatives": 0,
+          "true_positives": 0
+        },
+        "metrics": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "accuracy": 0.933251
+        }
+      }
+    }
+  },
+  "tier2_decision_distribution": {
+    "FLAGGED": 5980,
+    "AMBIGUOUS": 3389,
+    "OK": 1034
+  },
+  "probability_distribution": {
+    "overall": {
+      "mean": 0.7285,
+      "median": 0.8517,
+      "std": 0.2948,
+      "min": 0.0006,
+      "max": 0.9991
+    },
+    "false_negatives_from_tier1": {
+      "mean": 0.7704,
+      "median": 0.8728,
+      "std": 0.2552
+    },
+    "false_positives_from_tier1": {
+      "mean": 0.2315,
+      "median": 0.1116,
+      "std": 0.2792
+    }
+  },
+  "residual_errors": {
+    "still_missed_count": 3668,
+    "still_missed_examples": [
+      "hey what is it talk what is it an exclusive group of some wp talibans who are good at destroying self appointed purist who gang up any one who asks them questions abt their anti social and destructive",
+      "bye do not look come or think of comming back tosser",
+      "i am sorry i am sorry i screwed around with someones talk page it was very bad to do i know how having the templates on their talk page helps you assert your dominance over them i know i should bow do",
+      "why can not you believe how fat artie is did you see him on his recent appearence on the tonight show with jay leno he looks absolutely awful if i had to put money on it i would say that artie lange i",
+      "hi i am back again last warning stop undoing my edits or die",
+      "sorry puck but no one ever said dick was number one but he is clearly listed as being second only to batman and a master detective and martial artist and been trained in all the mentioned combat discp",
+      "CAPSLOCKFLAG unblock me or i will get my lawyers on to you for blocking my constitutional right to free speech",
+      "give me a permanat block raseac remember me muslims dont you worry for these images they are trying to hurt us but they cant look these images are fake and have nothing to do with islam or our prophet",
+      "god is dead i do not mean to startle anyone but god is dead we should not worry about him anymore just thought i would let everyone know well goodbye and good luck with your newfound crisis of faith",
+      "have you seen the reference to their claim you moron this is not a source it s their pov once i have more time i will reduce your pashtun nationalist povs here on wiki and give order to my uncles and "
+    ],
+    "both_tiers_fp_count": 54,
+    "both_tiers_fp_examples": [
+      "i read that quality article reference number 3 where he states it is not because i died in the 9 11 attacks that put my career on hold it is because my financial backers pulled out he is obviously a g",
+      "help me please i am now mad i need to calm down mmmm yes and now i am typing so fast it is going to spew out like a fishery in a door mat postal service creating a new article is a fuck doodle not it ",
+      "give a reason when you accuse someone of vandalism i got a message telling me i got blocked i made 2 changes on the same page correcting the mispelled word brian into brain and changing a wrong refere",
+      "gregalton you are still a douchebag signed i am not an editor so i really do not have a problem calling you a douchebag the fact that the article considers anyone who criticizes the practice of frb as",
+      "when i said yobmod came he saw he fuck up this article this was because i was extremely pissed off at yobmod s constant deletion of links to actual themes used in science fiction and giving rules for ",
+      "why is it flaming assed liberals think every liberty is their s except being told off kis bad how s someone to know they fuck up without feedback it is a statement of an honest heartfelt opinion not y",
+      "could you please elaborate what do you mean with whoop de fuck do does not look like a compelling argument why is this information unacceptable why is this unacceptable but the alumni list is not the ",
+      "hey whose entire existence here seems to be devoted to defending one editor feel free to look at my contributions anytime and eat your fuck crow i could take a comment like this from someone who has a",
+      "CAPSLOCKFLAG static is a fag",
+      "testified album 3 1 i showed ya 2 make it official 3 please 4 pains of a hustla ft the kid 5 lady 6 my dream 7 no and yes 8 say it 9 let us go fuck ft the sistas 10 18 tba"
+    ]
+  }
+}

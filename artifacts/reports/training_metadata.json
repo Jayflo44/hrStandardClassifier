@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-09T04:35:33.206906+00:00",
+  "feature_pipeline": {
+    "word_tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "max_features": 15000,
+      "stop_words": "english"
+    },
+    "char_tfidf": {
+      "ngram_range": [
+        3,
+        5
+      ],
+      "max_features": 15000,
+      "analyzer": "char_wb"
+    },
+    "dense_projection": {
+      "method": "TruncatedSVD",
+      "components": 300
+    }
+  },
+  "classifier": "LogisticRegression(class_weight='balanced')",
+  "dataset_path": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/hrStandardClassifier/data/processed/train_clean_validated.csv",
+  "encoder_mode": "tfidf_plus_classic_dense_projection",
+  "label_definition": "is_toxic = max(toxic, severe_toxic, obscene, threat, insult, identity_hate)"
+}

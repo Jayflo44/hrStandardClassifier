@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "script": "test_logreg_augmented.py",
+    "timestamp": "2026-04-05T10:54:49.450901+00:00",
+    "elapsed_seconds": 475.682,
+    "methodology": "stacking_ensemble (tfidf + transformer)",
+    "model": "LogisticRegression(solver='liblinear', class_weight='balanced')"
+  },
+  "sample": {
+    "total_extracted": 1000,
+    "train_size": 800,
+    "test_size": 200,
+    "features": 10001
+  },
+  "confusion_matrix": {
+    "true_negatives": 98,
+    "false_positives": 2,
+    "false_negatives": 11,
+    "true_positives": 89
+  },
+  "metrics": {
+    "precision": 0.978022,
+    "recall": 0.89,
+    "f1_score": 0.931937,
+    "accuracy": 0.935
+  }
+}
