@@ -1,10 +1,3 @@
-Absolutely — here’s a full, professional README.md tailored to your project.
-You can copy-paste this directly into GitHub.
-
-⸻
-
-📘 README.md — HR Standards Classifier
-
 # HR Standards Classifier  
 ### AI-Powered Message Triage System
 
