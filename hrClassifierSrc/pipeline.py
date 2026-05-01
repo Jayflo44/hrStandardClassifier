@@ -1,3 +1,4 @@
+#pipeline.py
 """
 Pipeline orchestrator — Tier 1 → Tier 2 → Tier N.
 
@@ -19,12 +20,21 @@ import argparse
 import time
 from pathlib import Path
 from typing import Any
+from TierOneBouncer import TierOneBouncer
+import json
+from dotenv import load_dotenv
+import os
+from openai import OpenAI
 
-from tier_one_bouncer import TierOneBouncer
+# Load .env from project root
+load_dotenv()
 
-_ROOT = Path(__file__).resolve().parent
-RULES_PATH = _ROOT / "hr_rules.yaml"
-TIER2_CHECKPOINT = _ROOT / "artifacts" / "models" / "tier2_finetuned"
+api_key = os.getenv("OPENAI_API_KEY")
+
+_openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+_ROOT = Path(__file__).resolve().parent.parent
+RULES_PATH = _ROOT / "hrClassifierSrc" /"hr_rules.yaml"
+MODELS_DIR = _ROOT / "artifacts" / "models"
 
 class HRPipeline:
     """HR classification pipeline: Tier 1 → Tier 2."""
@@ -33,7 +43,72 @@ class HRPipeline:
         self.rules_path = Path(rules_path)
         self.bouncer = TierOneBouncer(self.rules_path)
         self._tier2 = None  # lazy-loaded
+    @staticmethod 
+    def generate_tier2_reason(
+    text: str,
+    decision: str,
+    toxic_prob: float,
+    confidence_pct: float,
+    ) -> dict:
+        prompt = f"""
+    You are generating a short explanation for an HR message triage system.
 
+    Do not re-classify the message.
+    Do not change the decision.
+    Only explain why the existing Tier 2 output may have been triggered.
+
+    Message: {text}
+    Tier 2 decision: {decision}
+    Toxic probability: {toxic_prob:.6f}
+    Confidence percent: {confidence_pct:.2f}
+
+    Return JSON with:
+    - reason_summary: brief explanation, max 25 words
+    - risk_type: one of [insult, harassment, threat, profanity, pii, neutral, unclear]
+    - recommended_action: one of [allow, review, escalate]
+    """
+
+        response = _openai_client.responses.create(
+            model="gpt-5",
+            input=prompt,
+            text={
+                "format": {
+                    "type": "json_schema",
+                    "name": "tier2_reason",
+                    "strict": True,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "reason_summary": {"type": "string"},
+                            "risk_type": {
+                                "type": "string",
+                                "enum": [
+                                    "insult",
+                                    "harassment",
+                                    "threat",
+                                    "profanity",
+                                    "pii",
+                                    "neutral",
+                                    "unclear",
+                                ],
+                            },
+                            "recommended_action": {
+                                "type": "string",
+                                "enum": ["allow", "review", "escalate"],
+                            },
+                        },
+                        "required": [
+                            "reason_summary",
+                            "risk_type",
+                            "recommended_action",
+                        ],
+                        "additionalProperties": False,
+                    },
+                }
+            },
+        )
+
+        return json.loads(response.output_text)
     @property
     def tier2(self):
         """
@@ -45,7 +120,7 @@ class HRPipeline:
         if self._tier2 is None:
             try:
                 # Change this import only if your module filename changes.
-                from embedd import Tier2SemanticEngine
+                from tier2_runtime import Tier2RuntimeEngine
             except ImportError as e:
                 raise ImportError(
                     "Could not import Tier2SemanticEngine from embedd.py. "
@@ -53,7 +128,7 @@ class HRPipeline:
                     "are installed (e.g. transformers, torch)."
                 ) from e
 
-            self._tier2 = Tier2SemanticEngine(checkpoint_path=TIER2_CHECKPOINT)
+            self._tier2 = Tier2RuntimeEngine(models_dir=MODELS_DIR)
         return self._tier2
 
     def classify(self, raw_text: str) -> dict[str, Any]:
@@ -101,7 +176,22 @@ class HRPipeline:
 
         # --- Tier 2: Semantic analysis ---
         tier2_result = self.tier2.analyze_and_route(clean_text)
+        tier2_reason = None
 
+        if tier2_result["decision"] == "FLAGGED":
+            try:
+                tier2_reason = self.generate_tier2_reason(
+                    text=clean_text,
+                    decision=tier2_result["decision"],
+                    toxic_prob=tier2_result["toxic_prob"],
+                    confidence_pct=tier2_result["confidence"],
+                )
+            except Exception:
+                tier2_reason = {
+                    "reason_summary": "Tier 2 detected potentially unsafe language.",
+                    "risk_type": "unclear",
+                    "recommended_action": "review",
+                }
         return {
             "final_decision": tier2_result["decision"],
             "decided_by": "Tier 2 (Semantic Engine)",
@@ -115,6 +205,9 @@ class HRPipeline:
                 "toxic_prob": tier2_result["toxic_prob"],
                 "confidence_pct": tier2_result["confidence"],
                 "action": tier2_result["action"],
+                "reason_summary": tier2_reason["reason_summary"] if tier2_reason else None,
+                "risk_type": tier2_reason["risk_type"] if tier2_reason else None,
+                "recommended_action": tier2_reason["recommended_action"] if tier2_reason else None,
             },
         }
 

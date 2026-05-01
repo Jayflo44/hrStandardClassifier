@@ -87,4 +87,10 @@ if __name__ == "__main__":
 
     for msg in mensajes_prueba:
         resultado = tier2.analyze_and_route(msg)
+        tier2_reason = generate_tier2_reason(
+            text=clean_text,
+            decision=tier2_result["decision"],
+            toxic_prob=tier2_result["toxic_prob"],
+            confidence_pct=tier2_result["confidence"],
+        )
         print(f"\n[{resultado['decision']:9s}] {resultado['confidence']:6.2f}% | {msg[:80]}")

@@ -31,21 +31,21 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 _ROOT = Path(__file__).resolve().parent
-DEFAULT_TRAIN_CSV = (
+DEFAULT_TEST_CSV = (
     _ROOT
     / "data"
     / "raw"
     / "jigsaw-toxic-comment-classification-challenge"
-    / "train"
-    / "train.csv"
+    / "test"
+    / "test.csv"
 )
 
 __all__ = [
-    "DEFAULT_TRAIN_CSV",
+    "DEFAULT_TEST_CSV",
     "PreprocessConfig",
     "preprocess_text",
     "preprocess_text_tracked",
-    "load_and_preprocess_train",
+    "load_and_preprocess_test",
 ]
 
 # ---------------------------------------------------------------------------
@@ -490,7 +490,7 @@ def _generate_report(
 # ---------------------------------------------------------------------------
 
 
-def load_and_preprocess_train(
+def load_and_preprocess_test(
     path: Path | str | None = None,
     *,
     text_column: str = "comment_text",
@@ -509,7 +509,7 @@ def load_and_preprocess_train(
     """
     import time
 
-    csv_path = Path(path) if path is not None else DEFAULT_TRAIN_CSV
+    csv_path = Path(path) if path is not None else DEFAULT_TEST_CSV
     logger.info("Leyendo %s (nrows=%s)", csv_path, nrows)
 
     t0 = time.perf_counter()
@@ -642,7 +642,7 @@ if __name__ == "__main__":
     import time
 
     parser = argparse.ArgumentParser(
-        description="Preprocesar train.csv de Jigsaw"
+        description="Preprocesar test.csv de Jigsaw"
     )
     parser.add_argument("--input", type=str, default=None)
     parser.add_argument("--output", type=str, default=None)
@@ -658,14 +658,14 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     output = args.output or str(
-        _ROOT / "data" / "processed" / "train_clean.csv"
+        _ROOT / "data" / "processed" / "test_clean.csv"
     )
     report = None if args.no_report else str(
         _ROOT / "data" / "processed" / "preprocessing_report.json"
     )
 
     t0 = time.perf_counter()
-    df = load_and_preprocess_train(
+    df = load_and_preprocess_test(
         path=args.input,
         save_path=output,
         report_path=report,

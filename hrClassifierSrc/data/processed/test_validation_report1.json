@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-23T00:53:59.281124+00:00",
+  "input_rows": 63603,
+  "drops": {
+    "duplicate_ids": 0,
+    "empty_comment_text": 0,
+    "missing_label_values": 0,
+    "invalid_label_values": 0,
+    "rows_with_minus_one_labels": 0
+  },
+  "output_rows": 63603,
+  "rows_removed_total": 0,
+  "label_distribution": {
+    "non_toxic": 57360,
+    "toxic": 6243
+  }
+}

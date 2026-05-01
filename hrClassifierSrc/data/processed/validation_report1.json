@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "script": "validate_clean.py",
+    "timestamp": "2026-04-23T00:41:51.374167+00:00",
+    "elapsed_seconds": 0.405
+  },
+  "files": {
+    "raw_csv": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/hrClassifierSrc/data/processed/test_clean_validated.csv",
+    "preprocessed_csv": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/hrClassifierSrc/data/processed/test_clean.csv",
+    "output_csv": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/hrClassifierSrc/data/processed/test_clean_validated1.csv",
+    "report_json": "/Users/JoshNPri1/Downloads/Special Topics Data Science/HR_Classifer/HR/hrClassifierSrc/data/processed/validation_report1.json"
+  },
+  "integrity_validation": {
+    "passed": false,
+    "original_rows": 63603,
+    "preprocessed_rows": 153164,
+    "columns_checked": [
+      "id",
+      "toxic",
+      "severe_toxic",
+      "obscene",
+      "threat",
+      "insult",
+      "identity_hate"
+    ],
+    "missing_columns": [
+      "toxic",
+      "severe_toxic",
+      "obscene",
+      "threat",
+      "insult",
+      "identity_hate"
+    ],
+    "row_count_match": false,
+    "column_mismatches": {}
+  },
+  "status": "ABORTED"
+}

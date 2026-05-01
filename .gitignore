@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+artifacts/
+hrClassifierSrc/data/raw/
+# Large dataset files
+hrClassifierSrc/data/processed/*.csv
+# Secrets
+.env
+.DS_Store
+*.pyc

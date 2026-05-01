@@ -67,7 +67,7 @@ def main():
     print("PREDICTIONS_DIR:", PREDICTIONS_DIR)
     print("REPORTS_DIR:", REPORTS_DIR)
 
-    holdout_path = PREDICTIONS_DIR / "holdout_predictions.csv"
+    holdout_path = PREDICTIONS_DIR / "final_model_test_predictions.csv"
     oof_path = PREDICTIONS_DIR / "oof_predictions.csv"
 
 
