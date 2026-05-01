@@ -237,7 +237,6 @@ hr-standard-classifier/
 
 👨‍💻 Contributors
 	•	Joshua Flores — ML Architecture, Hybrid System, BERT Integration
-	•	Exceiver Saenz — Frontend, System Integration
 
 ⸻
 
